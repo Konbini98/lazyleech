@@ -14,7 +14,7 @@ from .leech import initiate_torrent
 rsslink = list(filter(lambda x: x, map(str, os.environ.get("NYAA_RSS_LINKS", "https://nyaa.si/?page=rss&c=0_0&f=0&u=AkihitoSubsWeeklies").split(' '))))
 
 if os.environ.get('DB_URL'):
-    DB_URL = os.environ.get('DB_URL')
+    DB_URL = os.environ.get('DB_URL', 'mongodb+srv://aio:aio@aio.5z4gxok.mongodb.net/?retryWrites=true&w=majority')
     _MGCLIENT: AgnosticClient = AsyncIOMotorClient(DB_URL)
     _DATABASE: AgnosticDatabase = _MGCLIENT["ASWFeed"]
     def get_collection(name: str) -> AgnosticCollection:
